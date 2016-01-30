@@ -1,0 +1,31 @@
+May 2014
+Resolved issues:
+
+1. Excel Spreadsheets not retaining Merged Cells. 
+
+--I fixed this by adding a function to the code that preserves merged cells, This should also take care of the lost formatting issues we have seen before.
+
+2. Automatically display bookmark panel when the main PDF is opened.
+
+--Fixed by setting the Initial View "Outline" setting using a PDF API2 Module.
+
+3. Verify that the parcel number can be read and error out before continuing with the script. What this one did, was that if the parcel number was not read from the runsheet, it would dump all of the files into the root of the web directory, and none would be accessible from the hyperlinks.
+
+--Fixed by adding a check, and if the check is not passed the script will error and log the error
+
+4. APS Now leaves original index.xls in the root folder and places hyperlinked index.xks in completed
+
+5. pdf2ps changed to pdftops
+
+ —Problem with pdf2ps: fonts are converted to bitmap fonts and cropping to bounding boxes. researched pdftops and found that the conversion takes less time, the resulting file is smaller, and fonts are better preserved. Switched and tested.
+
+6. Added “CD folder generation” as an option to the main script rather that invoking a separate script.
+
+7. Investigated support for XLSX files. With these files ALL formatting is lost with current PERL modules for excel
+
+8. Rigorously tested and rewrote dropboxCheck function. 
+—This function ensures that APS fully syncs newly created files before exiting the script ale allowing other folders to run. Prevents folders from being reran and allows other folders to fully sync before running.
+
+Working on:
+
+1. The default behavior of the “HotFolder” script, apsauto.sh : is to wait X number of minutes since the index.xls file was accessed. Rather that this time consuming behavior I am working on using the DropBox API to verify the sync from DropBox and when that is completed running the folder through APS. This will allow for a more real time hot folder and will speed up APS significantly. I am nearly completed with this script. I just need to foo a little more testing and coding.
