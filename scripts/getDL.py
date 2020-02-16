@@ -1,9 +1,6 @@
 #! /usr/bin/python
 #################################################################################
-# Copyright (C) Steven M. Japalucci - All Rights Reserved
-# Unauthorized copying of this file, via any medium is strictly prohibited
-# Proprietary and confidential
-# Written by Steven M Japalucci RHCE RHCT <steve.japalucci@gmail.com>, August 2013
+# Written by Steven M Japalucci <steve.japalucci@gmail.com>, August 2013
 #################################################################################
 # Include the Dropbox SDK
 import dropbox
